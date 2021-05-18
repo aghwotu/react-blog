@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Suspense, lazy } from "react";
+import classNames from "classnames";
+import { Helmet } from "react-helmet";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Link from "./components/_ui/Link/Link";
+import Header from "./components/Home/HomeHeader/HomeHeader";
+import Loader from "./components/_ui/Loader";
+
+
+import "./App.scss";
+
+const Home = React.lazy(() => import("./components/Home/Home"));
+
+
+
+class App extends Component {
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.path != this.props.path) return;
+  //   this.scrollToTop();
+  // }
+
+  // scrollToTop = () => {
+  //   scrollTo(0, 0);
+  // };
+
+  render() {
+    return (
+      <div className="App">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Amelia Wattenberger</title>
+          <link rel="canonical" href="https://wattenberger.com" />
+          <meta property="og:type" content="article" />
+          <meta
+            name="description"
+            content="Learn how to make charts interactive using d3.js"
+          />
+        </Helmet>
+
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+           
+            <Route>
+              <div
+                style={{
+                  height: "90vh",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <h2>Uh oh, there's nothing here</h2>
+                <Link href="/">Take me Home</Link>
+              </div>
+            </Route>
+          </Switch>
+
+         
+
+         
+        </Suspense>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);

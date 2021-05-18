@@ -1,0 +1,148 @@
+@import "src/styles/lib";
+
+.USMap {
+    position: relative;
+    z-index: 10;
+
+    svg {
+        overflow: visible;
+    }
+
+    &__annotation {
+        fill: white;
+        fill: #2c3e50;
+        text-anchor: middle;
+        pointer-events: none;
+
+        &__name {
+            font-weight: 900;
+            font-size: 0.8em;
+        }
+        &__value {
+            // font-weight: 900;
+            font-size: 0.7em;
+        }
+    }
+
+    &__outline {
+        fill: none;
+        stroke: white;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    &__state {
+        stroke: white;
+        stroke-width: 1.8;
+
+        &--is-hovered {
+            // stroke: purple;
+        }
+    }
+
+    &__legend {
+        position: absolute;
+        bottom: 18%;
+        right: -3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__color {
+            flex: none;
+            height: 1.5em;
+            width: 10em;
+            border-radius: 2em;
+            border: 4px solid white;
+        }
+
+        &__items {
+            display: flex;
+            align-items: center;
+        }
+
+        &__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            // text-align: right;
+            align-items: center;
+            width: 2.3em;
+            transform: translateX(50%);
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -0.5em;
+                left: 50%;
+                height: 0.5em;
+                width: 1px;
+                background: white;
+            }
+
+            &__color {
+                flex: none;
+                height: 1.5em;
+                width: 1.5em;
+                border-radius: 100%;
+                border: 4px solid white;
+            }
+
+            &__value {
+                position: relative;
+                font-size: 0.8em;
+                font-feature-settings: "ss03", "zero", "cv08", "cv11", "tnum" 1;
+                font-weight: 600;
+            }
+
+            &:last-of-type {
+                &:before {
+                    display: none;
+                }
+
+                .USMap__legend__item__value:after {
+                    content: " books";
+                    position: absolute;
+                    right: -0.3em;
+                    font-weight: 400;
+                    transform: translateX(100%);
+                }
+            }
+        }
+    }
+
+    &Tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        pointer-events: none;
+
+        &__wrapper {
+            background: rgba(white, 0.96);
+            padding: 0.9em 1em;
+            width: 15em;
+            transform: translate(-50%, 0);
+            z-index: 100;
+        }
+
+        h6 {
+            margin: 0;
+            text-align: center;
+        }
+
+        &__byline {
+            margin-top: 0.3em;
+            margin-bottom: 1em;
+            font-size: 0.7em;
+            line-height: 1.2em;
+            text-align: center;
+        }
+
+        &__item {
+            font-size: 0.7em;
+            line-height: 1.4em;
+        }
+    }
+}

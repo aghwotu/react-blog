@@ -1,0 +1,33 @@
+@import "src/styles/lib";
+
+.List {
+  padding: 0;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 0.5em;
+    list-style: none;
+
+    .Code__wrapper {
+        margin-top: 1em;
+    }
+
+    &__icon {
+      margin-top: 0.23em;
+      color: $a3;
+    }
+
+    &__number {
+      color: $a3;
+      margin-right: -0.5em;
+    }
+
+    &__text {
+      width: 100%;
+      padding-bottom: 0.3em;
+      padding-left: 1em;
+    }
+  }
+}
