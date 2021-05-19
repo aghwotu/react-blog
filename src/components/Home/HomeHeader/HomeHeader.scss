@@ -1,5 +1,4 @@
-@import "src/styles/lib";
-
+@import 'src/styles/lib';
 
 .HomeHeader {
   position: relative;
@@ -16,7 +15,8 @@
 }
 
 .HomeHeader__content__text__top {
-  padding-left: 1.3em;
+  // padding-left: 1.3em;
+  padding-left: 0.19em;
 }
 
 .HomeHeader__content__text {
