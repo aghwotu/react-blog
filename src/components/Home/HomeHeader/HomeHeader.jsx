@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import Link from '../../_ui/Link/Link';
 import WatercolorCanvas from '../../WatercolorCanvas/WatercolorCanvas';
+import Pdf from '../../../CV.pdf';
 
 require('./HomeHeader.scss');
 
@@ -39,7 +40,9 @@ class HomeHeader extends Component {
               , along with my{' '}
               <Link to="https://hartbullock.com/course/cse-138/"></Link> course
               offerings on this website. My{' '}
-              <Link to="https://hartbullock.com/CV.pdf">Curriculum Vitae</Link>{' '}
+              <a href={Pdf} target="_blank" rel="noreferrer">
+                Curriculum Vitae{' '}
+              </a>
               has more detail if you need it.
               <br />
               <br />
