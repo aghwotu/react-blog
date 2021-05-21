@@ -44,7 +44,8 @@
 
 @media (max-width: 900px) {
   .HomeHeader {
-    max-height: 34em;
+    // max-height: 150em;
+    height: 56em;
   }
   .HomeHeader__content {
     margin: 6em $horizontal-padding-skinny;
