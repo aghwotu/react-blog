@@ -1,3 +1,7 @@
+#### Hart Bullock
+
+Single page React blog built for [Hart Bullock](https://www.linkedin.com/in/hartbullock/). Original code by [Amelia Wattenberger](https://github.com/Wattenberger/Wattenberger-2019)
+
 #### Instructions
 
 Install dependencies
@@ -29,3 +33,17 @@ You can deploy the website to Netlity in two ways:
 ### Editing the home page
 
 You can edit the text on the home page on the [`HomeHeader.jsx`](src/components/Home/HomeHeader/HomeHeader.jsx)
+
+### Gotchas
+
+- If you see this error on your Mac terminal
+
+```bash
+  gyp: No Xcode or CLT version
+```
+
+Fix: run this code in your terminal
+
+```bash
+sudo xcode-select --reset
+```

@@ -1,4 +1,5 @@
 // import React, { Component, Suspense, lazy } from 'react';
+// eslint-disable-next-line no-unused-vars
 import React, { Component, Suspense } from 'react';
 // import classNames from 'classnames';
 import { Helmet } from 'react-helmet';
@@ -11,11 +12,12 @@ import {
 
 import Link from './components/_ui/Link/Link';
 // import Header from './components/Home/HomeHeader/HomeHeader';
-import Loader from './components/_ui/Loader';
+// import Loader from './components/_ui/Loader';
+import Home from './components/Home/Home';
 
 import './App.scss';
 
-const Home = React.lazy(() => import('./components/Home/Home'));
+// const Home = React.lazy(() => import('./components/Home/Home'));
 
 class App extends Component {
   // componentDidUpdate(prevProps, prevState) {
@@ -38,27 +40,25 @@ class App extends Component {
           <meta name="blog" content="Portfolio of Hart Bullock" />
         </Helmet>
 
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route exact path="/" component={Home} />
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-            <Route>
-              <div
-                style={{
-                  height: '90vh',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <h2>Uh oh, there's nothing here</h2>
-                <Link href="/">Take me Home</Link>
-              </div>
-            </Route>
-          </Switch>
-        </Suspense>
+          <Route>
+            <div
+              style={{
+                height: '90vh',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <h2>Uh oh, there's nothing here</h2>
+              <Link href="/">Take me Home</Link>
+            </div>
+          </Route>
+        </Switch>
       </div>
     );
   }
