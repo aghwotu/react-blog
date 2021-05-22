@@ -1,3 +1,6 @@
+#### Hart Bullock
+Single page React blog built for [Hart Bullock](https://www.linkedin.com/in/hartbullock/). Original code by [Amelia Wattenberger](https://github.com/Wattenberger/Wattenberger-2019)
+
 #### Instructions
 
 Install dependencies
