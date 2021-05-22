@@ -1,20 +1,31 @@
-import React from 'react'
-import {Link as RouterLink} from "react-router-dom"
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import './Link.scss';
 
-const Link = ({ href, to, type="inline", className, children, ...props }) => {
-    if (to && !to.startsWith("http") && to != "/rss") return (
-        <RouterLink to={to} className={`Link Link--type-${type} ${className}`} {...props}>
-            { children }
-        </RouterLink>
-    )
-
+const Link = ({ href, to, type = 'inline', className, children, ...props }) => {
+  if (to && !to.startsWith('http') && to !== '/rss')
     return (
-        <a className={`Link Link--type-${type} ${className}`} href={href || to} target="_blank" rel="noopener" {...props}>
-            { children }
-        </a>
-    )
-}
+      <RouterLink
+        to={to}
+        className={`Link Link--type-${type} ${className}`}
+        {...props}
+      >
+        {children}
+      </RouterLink>
+    );
 
-export default Link
+  return (
+    <a
+      className={`Link Link--type-${type} ${className}`}
+      href={href || to}
+      target="_blank"
+      rel="noreferrer"
+      {...props}
+    >
+      {children}
+    </a>
+  );
+};
+
+export default Link;

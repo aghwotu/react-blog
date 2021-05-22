@@ -95,6 +95,7 @@ class WatercolorCanvas extends Component {
 
     scene.enable();
 
+    // eslint-disable-next-line no-unused-vars
     let interval = setInterval(() => {
       this.addDrip(scene);
     }, 300);

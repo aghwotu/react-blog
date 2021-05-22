@@ -1,15 +1,16 @@
-import React, { Component, Suspense, lazy } from 'react';
-import classNames from 'classnames';
+// import React, { Component, Suspense, lazy } from 'react';
+import React, { Component, Suspense } from 'react';
+// import classNames from 'classnames';
 import { Helmet } from 'react-helmet';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Route,
   Switch,
   withRouter,
 } from 'react-router-dom';
 
 import Link from './components/_ui/Link/Link';
-import Header from './components/Home/HomeHeader/HomeHeader';
+// import Header from './components/Home/HomeHeader/HomeHeader';
 import Loader from './components/_ui/Loader';
 
 import './App.scss';

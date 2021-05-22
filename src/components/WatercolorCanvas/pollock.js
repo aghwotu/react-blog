@@ -1,4 +1,5 @@
-import {Vector2D }from "./vector2d"
+// eslint-disable-next-line no-unused-vars
+import { Vector2D } from './vector2d';
 
 /*
 Copyright (c) 2014 Mike Ferron (mikeferron.com)
@@ -23,17 +24,17 @@ IN THE SOFTWARE.
 */
 
 /*
-* CONSTRUCTOR
-*/
+ * CONSTRUCTOR
+ */
 
 export function Pollock(options) {
   this.settings = {
     canvasID: null,
     clear: true,
-    mousemove: function(event) {},
-    mousedown: function(event) {},
-    mouseup: function(event) {},
-    click: function(event) {},
+    mousemove: function (event) {},
+    mousedown: function (event) {},
+    mouseup: function (event) {},
+    click: function (event) {},
   };
 
   Pollock.extend(this.settings, options, true);
@@ -49,29 +50,28 @@ export function Pollock(options) {
   this.context = this.canvas.getContext('2d');
 
   this.entities = [];
-};
+}
 
 /*
-* Helper Functions...
-*/
+ * Helper Functions...
+ */
 
-Pollock.extend = function(to, from, allowNew) {
+Pollock.extend = function (to, from, allowNew) {
   for (var i in from) {
-    if (allowNew || to.hasOwnProperty(i))
-    to[i] = from[i];
+    if (allowNew || to.hasOwnProperty(i)) to[i] = from[i];
   }
   return to;
 };
-Pollock.randomPosNeg = function() {
+Pollock.randomPosNeg = function () {
   return Math.random() * 2 - 1;
 };
-Pollock.degreesToRadians = function(degrees) {
+Pollock.degreesToRadians = function (degrees) {
   return (degrees * Math.PI) / 180;
 };
-Pollock.radiansToDegrees = function(radians) {
+Pollock.radiansToDegrees = function (radians) {
   return (radians * 180) / Math.PI;
 };
-Pollock.wrapAngle = function(angle) {
+Pollock.wrapAngle = function (angle) {
   while (angle < -Math.PI) {
     angle += Math.PI * 2;
   }
@@ -81,29 +81,33 @@ Pollock.wrapAngle = function(angle) {
 
   return angle;
 };
-Pollock.randomInRange = function(from, to) {
-  return Math.floor(Math.random()*(to-from+1)+from);
+Pollock.randomInRange = function (from, to) {
+  return Math.floor(Math.random() * (to - from + 1) + from);
 };
 
-Pollock.prototype.getCanvasContext = function() {
+Pollock.prototype.getCanvasContext = function () {
   return this.context;
 };
 
-Pollock.prototype.enable = function() {
-  window.requestAnimFrame = (function() {
-    return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame;
+Pollock.prototype.enable = function () {
+  window.requestAnimFrame = (function () {
+    return (
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame
+    );
   })();
 
-  window.cancelAnimFrame = (function() {
-    return window.cancelAnimationFrame ||
-    window.webkitCancelAnimationFrame ||
-    window.mozCancelAnimationFrame ||
-    window.oCancelAnimationFrame ||
-    window.msCancelAnimationFrame;
+  window.cancelAnimFrame = (function () {
+    return (
+      window.cancelAnimationFrame ||
+      window.webkitCancelAnimationFrame ||
+      window.mozCancelAnimationFrame ||
+      window.oCancelAnimationFrame ||
+      window.msCancelAnimationFrame
+    );
   })();
 
   this.animate(new Date().getTime());
@@ -114,12 +118,11 @@ Pollock.prototype.enable = function() {
   this.canvas.onclick = this.settings.click;
 
   var that = this;
-  function doResize()
-  {
+  function doResize() {
     that.resize(); //i want 'this' to be Pollock, not the window
   }
   var endResize; //work this on a delay
-  window.onresize = function(e) {
+  window.onresize = function (e) {
     clearTimeout(endResize);
     endResize = setTimeout(doResize, 100);
   };
@@ -127,9 +130,9 @@ Pollock.prototype.enable = function() {
   return this;
 };
 
-Pollock.prototype.animate = function(time) {
+Pollock.prototype.animate = function (time) {
   var that = this;
-  this.animationFrame = window.requestAnimFrame(function() {
+  this.animationFrame = window.requestAnimFrame(function () {
     that.animate(new Date().getTime());
   });
 
@@ -138,13 +141,12 @@ Pollock.prototype.animate = function(time) {
   this.update(dt);
 };
 
-Pollock.prototype.disable = function() {
+Pollock.prototype.disable = function () {
   window.cancelAnimFrame(this.animationFrame);
   return this;
 };
 
-Pollock.prototype.resize = function()
-{
+Pollock.prototype.resize = function () {
   this.canvas.width = window.innerWidth;
   this.canvas.height = window.innerHeight;
 
@@ -152,11 +154,11 @@ Pollock.prototype.resize = function()
   this.height = this.canvas.height;
 };
 
-Pollock.prototype.addChild = function(obj) {
+Pollock.prototype.addChild = function (obj) {
   this.entities.push(obj);
 };
 
-Pollock.prototype.update = function(dt) {
+Pollock.prototype.update = function (dt) {
   this.draw();
 
   var len = this.entities.length;
@@ -171,12 +173,10 @@ Pollock.prototype.update = function(dt) {
   }
 };
 
-Pollock.prototype.draw = function() {
+Pollock.prototype.draw = function () {
   if (this.settings.clear) {
     this.context.clearRect(0, 0, this.width, this.height);
     this.context.fillStyle = 'transparent';
     this.context.fillRect(0, 0, this.width, this.height);
   }
 };
-
-
