@@ -47,12 +47,13 @@ class HomeHeader extends Component {
               <br />
               <br />
               You can find me on{' '}
-              <Link to="https://twitter.com/HartBullock">Twitter</Link>connect
+              <Link to="https://twitter.com/HartBullock">Twitter</Link> connect
               via{' '}
               <Link to="https://www.linkedin.com/in/hartbullock/">
                 LinkedIn
               </Link>{' '}
-              , or reach out by <Link to="minglei.zhang@maine.edu">email</Link>.
+              , or reach out by{' '}
+              <Link href="mailto:minglei.zhang@maine.edu">email</Link>.
             </div>
           </div>
         </div>
